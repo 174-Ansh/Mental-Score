@@ -5,7 +5,7 @@
     window.location.hostname === "127.0.0.1" ||
     window.location.hostname === "localhost"
       ? "http://127.0.0.1:2200"
-      : "https://mansik-santulan-score.onrender.com";
+      : window.location.origin;
 
   const form = document.getElementById("predict-form");
   const submitBtn = document.getElementById("submit-btn");

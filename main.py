@@ -1,9 +1,11 @@
 import joblib
 import pandas as pd
+from pathlib import Path
 from fastapi import FastAPI
 from pydantic import BaseModel, Field
 from typing import Literal
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
 
 model = joblib.load('Mental_Health_Model.pkl')
 top_countries = ['Other','India','USA','Canada','Australia','UK','Germany','Mexico','Turkey','France']
@@ -16,6 +18,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+BASE_DIR = Path(__file__).resolve().parent
 
 
 #A first Pydantic Model
@@ -44,9 +48,19 @@ class PredictionResponse(BaseModel):
 
 
 
-@app.get('/')
-def greet():
-    return {'Welcome to Sheryians AI School Guys'}
+@app.get('/', include_in_schema=False)
+def index():
+    return FileResponse(BASE_DIR / 'index.html')
+
+
+@app.get('/style.css', include_in_schema=False)
+def styles():
+    return FileResponse(BASE_DIR / 'style.css', media_type='text/css')
+
+
+@app.get('/script.js', include_in_schema=False)
+def scripts():
+    return FileResponse(BASE_DIR / 'script.js', media_type='text/javascript')
 
 
 @app.post('/predict', response_model=PredictionResponse) #6.77777

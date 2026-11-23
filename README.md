@@ -72,6 +72,8 @@ Use the repository's `render.yaml` as the Render Blueprint. Alternatively, confi
 
 Do not include a space between `--` and `host` (`-- host`). The start command must use `--host`.
 
+The frontend is served by the FastAPI service at `/`. Do not configure a separate frontend service or change the frontend API URL to a second origin.
+
 ## Prediction API
 
 `POST /predict` accepts JSON with the form fields below:
