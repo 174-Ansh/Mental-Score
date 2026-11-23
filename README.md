@@ -1,6 +1,6 @@
 # Mental Score
 
-Mental Score is a student-wellness demo that estimates a mental-healt h score from lifestyle and social-media habits. It pairs a responsive web form with a FastAPI service and a pre-trained regression model.
+Mental Score is a student-wellness demo that estimates a mental-health score from lifestyle and social-media habits. It pairs a responsive web form with a FastAPI service and a pre-trained regression model.
 
 > **Important:** This project is for educational and informational use only. Its score is not a diagnosis or a substitute for professional care.
 
